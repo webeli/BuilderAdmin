@@ -1,19 +1,28 @@
 /*
  ** Dependencies
  */
-//var angular = require('angular');
-var uirouter = require('angular-ui-router');
-//var angularcookies = require('angular-cookies');
-//var firebase = require('firebase');
-//var angularfire = require('angularfire');
-//var angularanimate = require('angular-animate');
-//require('angular-moment');
+//require('angular');
+//require('angular-ui-router');
+//require('angular-material');
+//require('angular-animate');
+//require('angular-cookies');
+//require('angular-messages');
+//require('angular-aria');
+//require('firebase');
+//require('angularfire');
+
+/*var FBconfig = {
+    apiKey: "AIzaSyD5B_DssWCtBgWn_2-Cy0LhTZGeErAYAJE",
+    authDomain: "100meter.firebaseapp.com",
+    databaseURL: "https://100meter.firebaseio.com",
+    storageBucket: "project-8799195801841300390.appspot.com",
+};
+firebase.initializeApp(FBconfig);*/
 
 /*
  ** App
  */
-//var app = angular.module('app', ['ui.router', 'firebase', 'ngAnimate', 'angularMoment']);
-var app = angular.module('app', ['ui.router']);
+var app = angular.module('app', ['ui.router', 'firebase', 'ngAnimate', 'ngMaterial']);
 
 /*
  ** Run & Config
@@ -38,6 +47,7 @@ require('./src/app/Admin/Projects/EditProjectController')(app);
 /*
  ** Styles
  */
+//require('./node_modules/angular-material/angular-material.css');
 require("./src/styles/animations.css");
 require("./src/styles/styles.css");
 //require("./src/styles/styles.less");
