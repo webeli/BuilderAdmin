@@ -1,0 +1,52 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <md-button class="md-icon-button" aria-label="Settings" ng-click="toggle()" hide-gt-sm>
+      <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+    </md-button>
+    <img ng-src="https://tival.se/assets/tival-logo-rgb-white.png" height="40">
+    <!-- fill up the space between left and right area -->
+    <span flex></span>
+    <md-button ng-click="signOut();">
+      Signout
+    </md-button>
+  </div>
+</md-toolbar>
+
+<div layout="column" ng-cloak>
+  <section layout="row" flex>
+    <md-sidenav
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-md')"
+        md-disable-backdrop
+        md-whiteframe="4">
+      <md-toolbar class="md-theme-indigo" hide-gt-sm>
+        <div class="md-toolbar-tools">
+          <md-button class="md-icon-button" aria-label="Settings" ng-click="toggle()">
+            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+          </md-button>
+          <h1>Admin Menu</h1>
+        </div>
+      </md-toolbar>
+      <md-content layout-padding>
+        <md-list>
+          <md-list-item ui-sref="admin.dashboard">
+            <md-icon md-svg-icon="cached"></md-icon>
+            <p>Dashboard</p>
+          </md-list-item>
+          <md-list-item ui-sref="admin.projects">
+            <md-icon md-svg-icon="cached"></md-icon>
+            <p>Projects</p>
+          </md-list-item>
+          <md-list-item ng-click="navigateTo('data usage', $event)">
+            <md-icon md-svg-icon="cached"></md-icon>
+            <p>Statistics</p>
+          </md-list-item>
+        </md-list>
+      </md-content>
+    </md-sidenav>
+    <md-content flex layout-padding>
+      <div ui-view>Loading...</div>
+    </md-content>
+  </section>
+</div>

@@ -1,0 +1,52 @@
+{
+  "name": "builderAdmin",
+  "version": "1.0.0",
+  "description": "app for builders",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-aria": "^1.5.8",
+    "angular-cookies": "^1.5.8",
+    "angular-messages": "^1.5.8",
+    "angular-moment": "^1.0.0-beta.6",
+    "angular-ui-router": "^0.2.18",
+    "angularfire": "^2.0.1",
+    "bootstrap": "^3.3.6",
+    "firebase": "^3.1.0",
+    "jquery": "^2.2.2",
+    "less": "^2.6.1",
+    "moment": "^2.13.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/earthquaker/builderAdmin.git"
+  },
+  "keywords": [
+    "project",
+    "builder"
+  ],
+  "author": "Elias Hansen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/earthquaker/builderAdmin/issues"
+  },
+  "homepage": "https://github.com/earthquaker/builderAdmin#readme",
+  "devDependencies": {
+    "babel-core": "^6.7.6",
+    "babel-loader": "^6.2.4",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
+    "imports-loader": "^0.6.5",
+    "less-loader": "^2.2.3",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.15",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
