@@ -30,6 +30,11 @@ module.exports = function(app) {
                 template: require('./Admin/Projects/projects.html'),
                 controller: 'ProjectsController'
             })
+            .state('admin.statistics', {
+                url: 'statistics',
+                template: require('./Admin/Statistics/statistics.html'),
+                controller: 'StatisticsController'
+            })
             .state('admin.editproject', {
                 url: 'edit-project',
                 template: require('./Admin/Projects/edit-project.html'),

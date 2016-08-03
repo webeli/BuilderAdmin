@@ -1,22 +1,24 @@
 <md-button class="md-raised md-primary" ng-click="createProject($event)">+ New Project</md-button>
-<div flex-xs flex-gt-xs="50" layout="column">
-  <md-card md-theme-watch ng-repeat="project in projects">
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-headline">{{project.pName}}</span>
-        <span class="md-subhead">{{project.deadline}}</span>
-      </md-card-title-text>
-      <md-card-title-media>
-        <div class="md-media-lg card-media">
-          <img ng-src="https://s-media-cache-ak0.pinimg.com/564x/cd/05/0a/cd050aa0ef2b25c93249e0a25857d222.jpg">
-        </div>
-      </md-card-title-media>
-    </md-card-title>
-    <md-card-actions layout="row" layout-align="center">
-      <md-button>Delete</md-button>
-      <md-button>Share</md-button>
-      <md-button>Edit</md-button>
-      <md-button>Open</md-button>
-    </md-card-actions>
-  </md-card>
-</div>
+<md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="100" layout="column">
+      <md-card ng-repeat="project in projects">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{project.pName}}</span>
+            <span class="md-subhead">{{project.deadline}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media">
+              <img ng-src="https://s-media-cache-ak0.pinimg.com/564x/cd/05/0a/cd050aa0ef2b25c93249e0a25857d222.jpg">
+            </div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="center">
+          <md-button>Delete</md-button>
+          <md-button>Share</md-button>
+          <md-button>Edit</md-button>
+          <md-button>Open</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+</md-content>

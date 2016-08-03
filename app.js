@@ -46,6 +46,7 @@ require('./src/app/Admin/AdminController')(app);
 require('./src/app/Admin/Dashboard/DashboardController')(app);
 require('./src/app/Admin/Projects/ProjectsController')(app);
 require('./src/app/Admin/Projects/EditProjectController')(app);
+require('./src/app/Admin/Statistics/StatisticsController')(app);
 
 /*
  ** Styles
