@@ -1,6 +1,8 @@
 /*
  ** Dependencies
  */
+
+// FILE GETTING TO BIG, USING CDNs FOR NOW
 //require('angular');
 //require('angular-ui-router');
 //require('angular-material');
@@ -10,6 +12,7 @@
 //require('angular-aria');
 //require('firebase');
 //require('angularfire');
+//require('./node_modules/angular-material/angular-material.css');
 
 /*var FBconfig = {
     apiKey: "AIzaSyD5B_DssWCtBgWn_2-Cy0LhTZGeErAYAJE",
@@ -47,7 +50,6 @@ require('./src/app/Admin/Projects/EditProjectController')(app);
 /*
  ** Styles
  */
-//require('./node_modules/angular-material/angular-material.css');
 require("./src/styles/animations.css");
 require("./src/styles/styles.css");
 //require("./src/styles/styles.less");
