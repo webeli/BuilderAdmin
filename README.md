@@ -11,7 +11,7 @@ npm start (running: webpack-dev-server)
 ### Build
 
 ```
-**npm run build** (running: "webpack -p")
+__npm run build__ (running: "webpack -p")
 ```
 
 ### Deploy
