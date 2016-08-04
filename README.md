@@ -8,9 +8,20 @@ npm install -g webpack-dev-server
 npm start (will run: webpack-dev-server)
 ```
 
+### Build
+
+```
+npm run build (running: "webpack -p")
+```
+
+### Deploy
+
+```
+npm run deploy (running: "firebase deploy")
+```
+
 ### Build and Deploy
 
 ```
-webpack (for test, not minified) / webpack -p (minified for production)
-npm run deploy (will run: firebase deploy)
+npm run build-deploy (running: "webpack -p && firebase deploy")
 ```
