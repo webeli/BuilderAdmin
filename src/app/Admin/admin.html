@@ -1,7 +1,7 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
     <md-button class="md-icon-button" aria-label="Settings" ng-click="toggle()" hide-gt-sm>
-      <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+      <i class="material-icons">menu</i>
     </md-button>
     <img ng-src="https://tival.se/assets/tival-logo-rgb-white.png" height="40">
     <!-- fill up the space between left and right area -->
@@ -23,24 +23,24 @@
       <md-toolbar class="md-theme-indigo" hide-gt-sm>
         <div class="md-toolbar-tools">
           <md-button class="md-icon-button" aria-label="Settings" ng-click="toggle()">
-            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+            <i class="material-icons">clear</i>
           </md-button>
-          <h1>Admin Menu</h1>
+          <h1>Close Menu</h1>
         </div>
       </md-toolbar>
-      <md-content layout-padding>
+      <md-content style="padding-top:10px;">
         <md-list>
           <md-list-item ui-sref="admin.dashboard">
-            <md-icon md-svg-icon="cached"></md-icon>
-            <p>Dashboard</p>
+            <i class="material-icons">dashboard</i>
+            <p style="margin-left:10px;">Dashboard</p>
           </md-list-item>
           <md-list-item ui-sref="admin.projects">
-            <md-icon md-svg-icon="cached"></md-icon>
-            <p>Projects</p>
+            <i class="material-icons">list</i>
+            <p style="margin-left:10px;"> Projects</p>
           </md-list-item>
           <md-list-item ui-sref="admin.statistics">
-            <md-icon md-svg-icon="cached"></md-icon>
-            <p>Statistics</p>
+            <i class="material-icons">equalizer</i>
+            <p style="margin-left:10px;"> Statistics</p>
           </md-list-item>
         </md-list>
       </md-content>
