@@ -1,6 +1,7 @@
 module.exports = function(app) {
-  app.controller('ProjectsController', ['$scope', 'Auth', '$state', '$firebaseObject', '$mdDialog',
-    function($scope, Auth, $state, $firebaseObject, $mdDialog) {
+  app.controller('ProjectsController', ['$scope', 'Auth', '$state', '$firebaseArray', '$mdDialog',
+    function($scope, Auth, $state, $firebaseArray, $mdDialog) {
+
 
       /*
        ** Database References
@@ -10,11 +11,21 @@ module.exports = function(app) {
       /*
        ** Starters
        */
-      $scope.projects = $firebaseObject(projectsRef);
+      $scope.projects = $firebaseArray(projectsRef);
+        console.log($scope.projects);
 
       /*
        ** $scope functions
        */
+        $scope.editProject = function(key) {
+            if (key) {
+                $state.go("admin.editproject", {"projectKey" : key})
+            }
+        };
+        $scope.viewProject = function(key) {
+            console.log(key);
+        };
+
       $scope.createProject = function(ev) {
         // Appending dialog to document.body to cover sidenav in docs app
         var confirm = $mdDialog.prompt()

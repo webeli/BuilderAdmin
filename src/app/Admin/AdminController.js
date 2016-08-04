@@ -16,8 +16,6 @@ module.exports = function(app) {
       $scope.user = Auth.$getAuth();
       $scope.categories = $firebaseObject(categoriesRef);
 
-      console.log($scope.auth);
-
       /*
        ** $scope functions
        */
@@ -38,7 +36,6 @@ module.exports = function(app) {
       };
       $scope.signOut = function() {
         console.log("Logout....");
-        console.log(Auth);
         Auth.$signOut();
         $state.go("login");
       };

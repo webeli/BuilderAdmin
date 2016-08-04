@@ -14,10 +14,10 @@
           </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="center">
-          <md-button>Delete</md-button>
-          <md-button>Share</md-button>
-          <md-button>Edit</md-button>
-          <md-button>Open</md-button>
+          <md-button class="md-raised md-warn">Delete</md-button>
+          <md-button class="md-raised md-primary">Share</md-button>
+          <md-button class="md-raised md-primary" ng-click="editProject(project.$id);">Edit</md-button>
+          <md-button class="md-raised md-primary" ng-click="viewProject(project.$id);">View</md-button>
         </md-card-actions>
       </md-card>
     </div>

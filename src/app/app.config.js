@@ -36,8 +36,8 @@ module.exports = function(app) {
                 controller: 'StatisticsController'
             })
             .state('admin.editproject', {
-                url: 'edit-project',
-                template: require('./Admin/Projects/edit-project.html'),
+                url: 'edit-project/:projectKey',
+                template: require('./Admin/Projects/Edit/edit-project.html'),
                 controller: 'EditProjectController'
             });
 
