@@ -11,17 +11,17 @@ npm start (running: webpack-dev-server)
 ### Build
 
 ```
-__npm run build__ (running: "webpack -p")
+npm run build (running: "webpack -p")
 ```
 
 ### Deploy
 
 ```
-**npm run deploy** (running: "firebase deploy")
+npm run deploy (running: "firebase deploy")
 ```
 
 ### Build and Deploy
 
 ```
-**npm run build-deploy** (running: "webpack -p && firebase deploy")
+npm run build-deploy (running: "webpack -p && firebase deploy")
 ```
