@@ -16,7 +16,6 @@ module.exports = function(app) {
 
         // Get data from database
         var categories = $firebaseArray(categoriesRef);
-        //$scope.categories = $firebaseArray(categoriesRef);
 
         // Init first category and item
         categories.$loaded().then(function(){
@@ -30,23 +29,32 @@ module.exports = function(app) {
             var categoryRef = categoriesRef.child(key).child("refs");
             var category = $firebaseArray(categoryRef);
             category.$loaded().then(function(keys){
-                getItemsByKeys(keys);
+                getByKeys(keys, itemsRef, "items");
             });
         };
 
         $scope.getItemOptions = function(key) {
-            console.log(key);
+            $scope.options = 0;
+            var optionRefs = itemsRef.child(key).child("refs");
+            var options = $firebaseArray(optionRefs);
+            options.$loaded().then(function(keys){
+                getByKeys(keys, itemOptionsRef, "options");
+            });
         };
 
-        // Get Items By Keys
-        function getItemsByKeys(keys) {
+        // Get Value By Keys (keys:array, dbRef:databaseRef, type:string)
+        function getByKeys(keys, dbRef, type) {
             var data = [];
 
             angular.forEach(keys, function(key) {
-                var itemRef = itemsRef.child(key.$id);
-                itemRef.on('value', function(snap) {
+                var ref = dbRef.child(key.$id);
+                ref.on('value', function(snap) {
                     data.push(snap.val());
-                    $scope.items = data;
+                    if (type === "options") {
+                        $scope.options = data;
+                    } else if (type === "items") {
+                        $scope.items = data;
+                    }
                 });
             });
         }

@@ -1,12 +1,13 @@
 <md-content>
-    {{categories}}
-    <md-tabs md-dynamic-height md-border-bottom md-center-tabs>
+    <md-tabs md-dynamic-height md-border-bottom>
         <md-tab ng-repeat="category in categories" label="{{category.title}}" md-on-select="getCategoryItems(category.$id)"></md-tab>
     </md-tabs>
-    <md-tabs md-dynamic-height md-border-bottom md-center-tabs>
+    <md-tabs md-dynamic-height md-border-bottom>
         <md-tab ng-repeat="item in items" label="{{item.title}}" md-on-select="getItemOptions(item.key)">
             <md-content>
-
+                <div ng-repeat="option in options">
+                    {{option.title}}
+                </div>
             </md-content>
         </md-tab>
     </md-tabs>
