@@ -23,42 +23,51 @@ module.exports = function(app) {
             $scope.categories = categories;
         });
 
-        $scope.getCategoryItems = function(key) {
+        $scope.getCategoryItems = function(categoryKey) {
             $scope.items = 0;
-            var categoryRef = categoriesRef.child(key).child("refs");
+            $scope.options = null;
+            var categoryRef = categoriesRef.child(categoryKey).child("refs");
             var category = $firebaseArray(categoryRef);
             category.$loaded().then(function(keys){
-                getByKeys(keys, itemsRef, "items");
+                getItemsByKeys(keys, categoryKey);
             });
         };
 
-        $scope.getItemOptions = function(key) {
+        $scope.getItemOptions = function(itemKey) {
             $scope.options = 0;
-            var optionRefs = itemsRef.child(key).child("refs");
+            var optionRefs = itemsRef.child(itemKey).child("refs");
             var options = $firebaseArray(optionRefs);
             options.$loaded().then(function(keys){
-                getByKeys(keys, itemOptionsRef, "options");
+                getOptionsByKeys(keys, itemKey);
             });
         };
 
-        // Get Value By Keys (keys:array, dbRef:databaseRef, type:string)
-        function getByKeys(keys, dbRef, type) {
+
+        function getItemsByKeys(keys, categoryKey) {
             var data = [];
 
             angular.forEach(keys, function(key) {
-                var ref = dbRef.child(key.$id);
+                var ref = itemsRef.child(key.$id);
                 ref.on('value', function(snap) {
-                    data.push({...snap.val(),category:key});
-                    if (type === "options") {
-                        $scope.options = data;
-                        console.log($scope.options);
-                    } else if (type === "items") {
-                        $scope.items = data;
-                        console.log($scope.items);
-                    }
+                    data.push({...snap.val(),categoryKey:categoryKey});
+                    $scope.items = data;
+                    console.log("ITEMS: ", $scope.items);
                 });
             });
         }
+
+        function getOptionsByKeys(keys, itemKey) {
+            var data = [];
+
+            angular.forEach(keys, function(key) {
+                var ref = itemOptionsRef.child(key.$id);
+                ref.on('value', function(snap) {
+                    data.push({...snap.val(),itemKey:itemKey});
+                    $scope.options = data;
+                    console.log("OPTIONS: ", $scope.options);
+                });
+            });
+        };
 
     }]);
 }
