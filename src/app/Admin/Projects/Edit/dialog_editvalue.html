@@ -1,0 +1,34 @@
+<md-dialog aria-label="Edit Value" style="min-width:500px">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Edit Value</h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+        <md-dialog-content style="max-width:800px;max-height:810px; ">
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Category">
+                    <md-content class="md-padding">
+                        <p>Edit category</p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Item">
+                    <md-content class="md-padding">
+                        <p>Edit Item</p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Option">
+                    <md-content class="md-padding">
+                        <p>Edit Option</p>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="cancel()" style="margin-right:20px;" >
+                Done
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

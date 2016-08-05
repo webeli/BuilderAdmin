@@ -73,8 +73,56 @@ module.exports = function(app) {
         $scope.dialogNewValue = function(ev) {
             console.log(ev);
             $mdDialog.show({
-                controller: app.DialogController,
-                template: require('./dialog_newItem.html'),
+                controller: 'DialogController',
+                template: require('./dialog_newvalue.html'),
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true
+            })
+                .then(function(answer) {
+                    $scope.status = 'You said the information was "' + answer + '".';
+                }, function() {
+                    $scope.status = 'You cancelled the dialog.';
+                });
+        };
+
+        $scope.dialogEditValue = function(ev) {
+            console.log(ev);
+            $mdDialog.show({
+                controller: 'DialogController',
+                template: require('./dialog_editvalue.html'),
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true
+            })
+                .then(function(answer) {
+                    $scope.status = 'You said the information was "' + answer + '".';
+                }, function() {
+                    $scope.status = 'You cancelled the dialog.';
+                });
+        };
+
+        $scope.dialogProjectSettings = function(ev) {
+            console.log(ev);
+            $mdDialog.show({
+                controller: 'DialogController',
+                template: require('./dialog_projectsettings.html'),
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true
+            })
+                .then(function(answer) {
+                    $scope.status = 'You said the information was "' + answer + '".';
+                }, function() {
+                    $scope.status = 'You cancelled the dialog.';
+                });
+        };
+
+        $scope.dialogDeleteValue = function(ev) {
+            console.log(ev);
+            $mdDialog.show({
+                controller: 'DialogController',
+                template: require('./dialog_deletevalue.html'),
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose:true
