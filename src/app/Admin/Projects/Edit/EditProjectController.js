@@ -4,6 +4,7 @@ module.exports = function(app) {
         $scope.categories = 0;
         $scope.items = 0;
         $scope.options = null;
+        $scope.selectedValue = null;
 
         // Get project key and project db ref path
         var projectKey = $stateParams.projectKey;
@@ -23,9 +24,10 @@ module.exports = function(app) {
             $scope.categories = categories;
         });
 
-        $scope.getCategoryItems = function(categoryKey) {
+        $scope.getCategoryItems = function(categoryKey, categoryTitle) {
             $scope.items = 0;
             $scope.options = null;
+            $scope.selectedValue = {key:categoryKey,title:categoryTitle};
             var categoryRef = categoriesRef.child(categoryKey).child("refs");
             var category = $firebaseArray(categoryRef);
             category.$loaded().then(function(keys){
@@ -33,8 +35,9 @@ module.exports = function(app) {
             });
         };
 
-        $scope.getItemOptions = function(itemKey) {
+        $scope.getItemOptions = function(itemKey, itemTitle) {
             $scope.options = 0;
+            $scope.selectedValue = {key:itemKey, title:itemTitle};
             var optionRefs = itemsRef.child(itemKey).child("refs");
             var options = $firebaseArray(optionRefs);
             options.$loaded().then(function(keys){
