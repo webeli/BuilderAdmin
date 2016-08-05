@@ -3,7 +3,7 @@ module.exports = function(app) {
 
         $scope.categories = 0;
         $scope.items = 0;
-        $scope.options = 0;
+        $scope.options = null;
 
         // Get project key and project db ref path
         var projectKey = $stateParams.projectKey;
@@ -19,7 +19,6 @@ module.exports = function(app) {
 
         // Init first category and item
         categories.$loaded().then(function(){
-            console.log("loaded...");
             $scope.getCategoryItems(categories[0].$id);
             $scope.categories = categories;
         });
@@ -49,11 +48,13 @@ module.exports = function(app) {
             angular.forEach(keys, function(key) {
                 var ref = dbRef.child(key.$id);
                 ref.on('value', function(snap) {
-                    data.push(snap.val());
+                    data.push({...snap.val(),category:key});
                     if (type === "options") {
                         $scope.options = data;
+                        console.log($scope.options);
                     } else if (type === "items") {
                         $scope.items = data;
+                        console.log($scope.items);
                     }
                 });
             });

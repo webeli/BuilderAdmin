@@ -1,5 +1,10 @@
 <md-content>
+    <md-button class="md-raised md-primary">Project Settings</md-button>
+    <md-button class="md-raised md-primary">Manage categories</md-button>
+    <md-button class="md-raised md-primary">Manage items</md-button>
+    <md-button class="md-raised md-primary">Manage options</md-button>
     <md-tabs md-dynamic-height md-border-bottom>
+        <button>Add</button>
         <md-tab ng-repeat="category in categories" label="{{category.title}}" md-on-select="getCategoryItems(category.$id)"></md-tab>
     </md-tabs>
     <md-tabs md-dynamic-height md-border-bottom>
@@ -13,4 +18,4 @@
     </md-tabs>
 </md-content>
 
-<md-progress-circular style="margin-left:50%;" ng-show="items === 0" md-diameter="20" md-mode='indeterminate'></md-progress-circular>
+<md-progress-circular style="margin-left:50%;" ng-show="options === 0" md-diameter="40" md-mode='indeterminate'></md-progress-circular>
