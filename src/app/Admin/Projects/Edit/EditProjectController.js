@@ -1,5 +1,5 @@
 module.exports = function(app) {
-    app.controller('EditProjectController', ['$scope', 'Auth', '$state', '$stateParams', '$firebaseArray', '$timeout', function($scope, Auth, $state, $stateParams, $firebaseArray, $timeout) {
+    app.controller('EditProjectController', ['$scope', 'Auth', '$state', '$stateParams', '$firebaseArray', '$timeout', '$mdDialog', function($scope, Auth, $state, $stateParams, $firebaseArray, $timeout, $mdDialog) {
 
         $scope.categories = 0;
         $scope.items = 0;
@@ -67,6 +67,23 @@ module.exports = function(app) {
                     console.log("OPTIONS: ", $scope.options);
                 });
             });
+        };
+
+
+        $scope.dialogNewValue = function(ev) {
+            console.log(ev);
+            $mdDialog.show({
+                controller: app.DialogController,
+                template: require('./dialog_newItem.html'),
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true
+            })
+                .then(function(answer) {
+                    $scope.status = 'You said the information was "' + answer + '".';
+                }, function() {
+                    $scope.status = 'You cancelled the dialog.';
+                });
         };
 
     }]);

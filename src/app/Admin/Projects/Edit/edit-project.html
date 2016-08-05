@@ -1,19 +1,12 @@
 <md-content>
-    <md-button class="md-raised">Project Settings</md-button>
+    <md-button class="md-raised md-primary">Project Settings</md-button>
+    <md-button class="md-raised md-primary" ng-click="dialogNewValue($event)">New Value</md-button>
+    <md-button class="md-raised md-primary">Edit Value</md-button>
+    <md-button class="md-raised md-warn">Delete Value</md-button>
     <md-tabs md-dynamic-height md-border-bottom>
-        <md-tab ng-disabled="true">
-            <i class="material-icons">add</i>
-            <i class="material-icons">settings</i>
-            Category
-        </md-tab>
         <md-tab md-active="$index === 0" ng-repeat="category in categories" label="{{category.title}}" ng-click="getCategoryItems(category.$id)"></md-tab>
     </md-tabs>
     <md-tabs md-dynamic-height md-border-bottom>
-        <md-tab ng-disabled="true">
-            <i class="material-icons">add</i>
-            <i class="material-icons">settings</i>
-            Item
-        </md-tab>
         <md-tab ng-repeat="item in items" label="{{item.title}}" ng-click="getItemOptions(item.key)">
             <md-content>
                 <div ng-repeat="option in options">
