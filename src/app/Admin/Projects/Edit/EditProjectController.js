@@ -74,7 +74,6 @@ module.exports = function(app) {
 
 
         $scope.dialogNewValue = function(ev) {
-            console.log(ev);
             $mdDialog.show({
                 controller: 'DialogController',
                 template: require('./dialog_newvalue.html'),
@@ -90,7 +89,6 @@ module.exports = function(app) {
         };
 
         $scope.dialogEditValue = function(ev) {
-            console.log(ev);
             $mdDialog.show({
                 controller: 'DialogController',
                 template: require('./dialog_editvalue.html'),
@@ -106,7 +104,6 @@ module.exports = function(app) {
         };
 
         $scope.dialogProjectSettings = function(ev) {
-            console.log(ev);
             $mdDialog.show({
                 controller: 'DialogController',
                 template: require('./dialog_projectsettings.html'),
@@ -122,7 +119,6 @@ module.exports = function(app) {
         };
 
         $scope.dialogDeleteValue = function(ev) {
-            console.log(ev);
             $mdDialog.show({
                 controller: 'DialogController',
                 template: require('./dialog_deletevalue.html'),
