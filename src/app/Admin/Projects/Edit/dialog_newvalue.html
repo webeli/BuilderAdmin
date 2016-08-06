@@ -44,15 +44,19 @@
                 <md-tab label="Option">
                     <md-content class="md-padding">
                         <div layout="column" layout-align="center center">
-                            <form name="optionForm" ng-submit="addItem(item);">
+                            <form name="optionForm">
                                 <md-select placeholder="Item" ng-model="item" style="min-width: 200px;">
                                     <md-option ng-value="item" ng-repeat="item in items">{{item.title}}</md-option>
                                 </md-select>
                                 <md-input-container class="md-block" flex-gt-sm ng-hide="!items">
-                                    <label>New Option</label>
+                                    <label>Title</label>
                                     <input ng-model="option.title" type="text" required>
                                 </md-input-container>
-                                <md-button class="md-raised md-primary" type="submit">
+                                <md-input-container class="md-block" flex-gt-sm ng-hide="!items">
+                                    <label>Price</label>
+                                    <input ng-model="option.price" type="number" required>
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" type="button" ng-click="addOption(item, option);">
                                     Add Option
                                 </md-button>
                             </form>

@@ -37,6 +37,24 @@ module.exports = function(app) {
             var toastMsg = "Added " +item.title+" to "+category.title;
             $scope.openToast(toastMsg);
         };
+        $scope.addOption = function(item, option) {
+            if (!option || option.title === "") { return; }
+            var newOption = itemOptionsRef.push();
+            var newOptionKey = newOption.key;
+            newOption.set({
+                active: "true",
+                attribute: "",
+                default: false,
+                desc: "",
+                image: "https://cdn.filestackcontent.com/rndtkrHDRSqCBUC74UNs",
+                key:newOptionKey,
+                price:option.price || 0,
+                title:option.title
+            });
+            itemsRef.child(item.$id).child("refs").child(newOptionKey).set(newOptionKey);
+            var toastMsg = "Added " +option.title+" to "+item.title;
+            $scope.openToast(toastMsg);
+        };
         $scope.hide = function() {
             $mdDialog.hide();
         };
