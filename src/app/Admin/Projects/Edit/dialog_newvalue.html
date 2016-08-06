@@ -11,12 +11,12 @@
                 <md-tab label="Category">
                     <md-content class="md-padding">
                         <div layout="column" layout-align="center center">
-                            <form name="categoryForm" ng-submit="addCategory(category);">
+                            <form name="catForm">
                                 <md-input-container class="md-block" flex-gt-sm>
                                     <label>New Category</label>
-                                    <input ng-model="category.title" type="text" required>
+                                    <input ng-model="category.title" type="text">
                                 </md-input-container>
-                                <md-button class="md-raised md-primary" type="submit">
+                                <md-button class="md-raised md-primary" type="button" ng-click="addCategory(category);">
                                     Add Category
                                 </md-button>
                             </form>
@@ -26,15 +26,15 @@
                 <md-tab label="Item">
                     <md-content class="md-padding">
                         <div layout="column" layout-align="center center">
-                            <form name="itemForm" ng-submit="addItem(item);">
-                                <md-select placeholder="Category" ng-model="user" md-on-open="getCategories()" style="min-width: 200px;">
+                            <form name="itemForm">
+                                <md-select placeholder="Category" ng-model="category" style="min-width: 200px;">
                                     <md-option ng-value="category" ng-repeat="category in categories">{{category.title}}</md-option>
                                 </md-select>
                                 <md-input-container class="md-block" flex-gt-sm>
                                     <label>New Item</label>
                                     <input ng-model="item.title" type="text" required ng-disabled="!categories">
                                 </md-input-container>
-                                <md-button class="md-raised md-primary" type="submit">
+                                <md-button class="md-raised md-primary" type="button" ng-click="addItem(category, item);">
                                     Add Item
                                 </md-button>
                             </form>
@@ -45,7 +45,7 @@
                     <md-content class="md-padding">
                         <div layout="column" layout-align="center center">
                             <form name="optionForm" ng-submit="addItem(item);">
-                                <md-select placeholder="Item" ng-model="item" md-on-open="getItems()" style="min-width: 200px;">
+                                <md-select placeholder="Item" ng-model="item" style="min-width: 200px;">
                                     <md-option ng-value="item" ng-repeat="item in items">{{item.title}}</md-option>
                                 </md-select>
                                 <md-input-container class="md-block" flex-gt-sm ng-hide="!items">

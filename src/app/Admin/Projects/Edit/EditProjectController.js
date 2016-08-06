@@ -72,7 +72,6 @@ module.exports = function(app) {
             });
         };
 
-
         $scope.dialogNewValue = function(ev) {
             $mdDialog.show({
                 controller: 'DialogController',

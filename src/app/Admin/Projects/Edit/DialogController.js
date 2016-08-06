@@ -1,5 +1,6 @@
 module.exports = function(app) {
-    app.controller('DialogController', ['$scope', '$firebaseArray', '$stateParams', '$mdDialog', '$timeout', function($scope, $firebaseArray, $stateParams, $mdDialog, $timeout) {
+    app.controller('DialogController', ['$scope', '$firebaseArray', '$stateParams', '$mdDialog', '$timeout', '$mdToast',
+        function($scope, $firebaseArray, $stateParams, $mdDialog, $timeout, $mdToast) {
 
         // Get project key and project db ref path
         var projectKey = $stateParams.projectKey;
@@ -11,15 +12,30 @@ module.exports = function(app) {
         var itemOptionsRef = projectRef.child("itemOptions");
 
         // Scope init variables
-        $scope.categories = null;
-        $scope.items = null;
+        $scope.categories = $firebaseArray(categoriesRef);
+        $scope.items = $firebaseArray(itemsRef);
 
         // Scope functions
-        $scope.getCategories = function() {
-            $scope.categories = $firebaseArray(categoriesRef);
+        $scope.addCategory = function(category) {
+            if (!category || category.title === "") { return; }
+            var newCategory = categoriesRef.push();
+            newCategory.set({
+                title:category.title
+            });
+            var toastMsg = "Added " +category.title;
+            $scope.openToast(toastMsg);
         };
-        $scope.getItems = function() {
-            $scope.items = $firebaseArray(itemsRef);
+        $scope.addItem = function(category, item) {
+            if (!item || item.title === "") { return; }
+            var newItem = itemsRef.push();
+            var newItemKey = newItem.key;
+            newItem.set({
+                title:item.title,
+                key:newItemKey
+            });
+            categoriesRef.child(category.$id).child("refs").child(newItemKey).set(newItemKey);
+            var toastMsg = "Added " +item.title+" to "+category.title;
+            $scope.openToast(toastMsg);
         };
         $scope.hide = function() {
             $mdDialog.hide();
@@ -29,6 +45,10 @@ module.exports = function(app) {
         };
         $scope.answer = function(answer) {
             $mdDialog.hide(answer);
+        };
+
+        $scope.openToast = function(message) {
+            $mdToast.show($mdToast.simple().textContent(message).position('bottom right'));
         };
     }]);
 }
