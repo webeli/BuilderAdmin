@@ -14,7 +14,7 @@
           </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row">
-          <md-button class="md-raised md-warn">Delete</md-button>
+          <md-button class="md-raised md-warn" ng-click="deleteProject($event, project)">Delete</md-button>
           <md-button class="md-raised md-primary">Share</md-button>
           <md-button class="md-raised md-primary" ng-click="editProject(project.$id);">Edit</md-button>
           <md-button class="md-raised md-primary" ng-click="viewProject(project.$id);">View</md-button>

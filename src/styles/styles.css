@@ -5,7 +5,7 @@ body {
 }
 
 ._md-locked-open {
-  min-height:100vh;
+  min-height:80vh;
 }
 
 /* ANGULAR ANIMATE */

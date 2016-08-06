@@ -1,6 +1,6 @@
 module.exports = function(app) {
-  app.controller('ProjectsController', ['$scope', 'Auth', '$state', '$firebaseArray', '$mdDialog',
-    function($scope, Auth, $state, $firebaseArray, $mdDialog) {
+  app.controller('ProjectsController', ['$scope', 'Auth', '$state', '$firebaseArray', '$mdDialog', '$mdToast',
+    function($scope, Auth, $state, $firebaseArray, $mdDialog, $mdToast) {
 
 
       /*
@@ -12,19 +12,19 @@ module.exports = function(app) {
        ** Starters
        */
       $scope.projects = $firebaseArray(projectsRef);
-        console.log($scope.projects);
+      console.log($scope.projects);
 
       /*
        ** $scope functions
        */
-        $scope.editProject = function(key) {
-            if (key) {
-                $state.go("admin.editproject", {"projectKey" : key})
-            }
-        };
-        $scope.viewProject = function(key) {
-            console.log(key);
-        };
+      $scope.editProject = function(key) {
+          if (key) {
+              $state.go("admin.editproject", {"projectKey" : key})
+          }
+      };
+      $scope.viewProject = function(key) {
+          console.log(key);
+      };
 
       $scope.createProject = function(ev) {
         // Appending dialog to document.body to cover sidenav in docs app
@@ -45,6 +45,35 @@ module.exports = function(app) {
         }, function() {
           console.log("Cancel");
         });
+      };
+
+      $scope.deleteProject = function(ev, project) {
+        console.log(project);
+        // Appending dialog to document.body to cover sidenav in docs app
+        var confirm = $mdDialog.confirm()
+            .title('Sure you want to delete this project?')
+            .textContent('Everything will get permanently lost, for ever and ever!')
+            .ariaLabel('Delete project')
+            .targetEvent(ev)
+            .ok('Yes, delete')
+            .cancel('No, abort');
+        $mdDialog.show(confirm).then(function() {
+          var thisProject = projectsRef.child(project.$id);
+          thisProject.remove()
+              .then(function() {
+                console.log("Remove succeeded.")
+                $scope.openToast();
+              })
+              .catch(function(error) {
+                console.log("Remove failed: " + error.message)
+              });
+        }, function() {
+          console.log('You decided not to delete.');
+        });
+      };
+
+      $scope.openToast = function($event) {
+        $mdToast.show($mdToast.simple().textContent('PROJECT DELETED!').position('bottom right'));
       };
 
     }]);
