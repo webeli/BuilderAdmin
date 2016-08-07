@@ -40,7 +40,8 @@ module.exports = function(app) {
           projectsRef.push({
             pName: result
           }, function() {
-            console.log("Done....");
+            var toastMsg = "Created project: "+result;
+            $scope.openToast(toastMsg);
           });
         }, function() {
           console.log("Cancel");
@@ -61,8 +62,8 @@ module.exports = function(app) {
           var thisProject = projectsRef.child(project.$id);
           thisProject.remove()
               .then(function() {
-                console.log("Remove succeeded.")
-                $scope.openToast();
+                var toastMsg = "Deleted project: "+project.pName;
+                $scope.openToast(toastMsg);
               })
               .catch(function(error) {
                 console.log("Remove failed: " + error.message)
@@ -72,8 +73,8 @@ module.exports = function(app) {
         });
       };
 
-      $scope.openToast = function($event) {
-        $mdToast.show($mdToast.simple().textContent('PROJECT DELETED!').position('bottom right'));
+      $scope.openToast = function(message) {
+        $mdToast.show($mdToast.simple().textContent(message).position('bottom right'));
       };
 
     }]);

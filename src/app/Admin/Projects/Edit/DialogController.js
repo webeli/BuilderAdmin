@@ -34,7 +34,7 @@ module.exports = function(app) {
                 key:newItemKey
             });
             categoriesRef.child(category.$id).child("refs").child(newItemKey).set(newItemKey);
-            var toastMsg = "Added " +item.title+" to "+category.title;
+            var toastMsg = "Added item: " +item.title+" to category: "+category.title;
             $scope.openToast(toastMsg);
         };
         $scope.addOption = function(item, option) {
@@ -52,7 +52,7 @@ module.exports = function(app) {
                 title:option.title
             });
             itemsRef.child(item.$id).child("refs").child(newOptionKey).set(newOptionKey);
-            var toastMsg = "Added " +option.title+" to "+item.title;
+            var toastMsg = "Added option: " +option.title+" to item: "+item.title;
             $scope.openToast(toastMsg);
         };
         $scope.hide = function() {
