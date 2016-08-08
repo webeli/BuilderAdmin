@@ -80,12 +80,11 @@ module.exports = function(app) {
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose:true
-            })
-                .then(function(answer) {
-                    $scope.status = 'You said the information was "' + answer + '".';
-                }, function() {
-                    $scope.status = 'You cancelled the dialog.';
-                });
+            }).then(function(answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function() {
+                $scope.status = 'You cancelled the dialog.';
+            });
         };
 
         $scope.dialogEditValue = function(ev, obj) {
@@ -93,8 +92,8 @@ module.exports = function(app) {
                 var dbRef = categoriesRef;
             } else if (obj.type === "item") {
                 var dbRef = itemsRef;
-            }
-            console.log(obj);
+            } else { return; }
+
             var confirm = $mdDialog.prompt()
                 .title('Edit: '+obj.title)
                 .placeholder('New value')
@@ -120,12 +119,11 @@ module.exports = function(app) {
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose:true
-            })
-                .then(function(answer) {
-                    $scope.status = 'You said the information was "' + answer + '".';
-                }, function() {
-                    $scope.status = 'You cancelled the dialog.';
-                });
+            }).then(function(answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function() {
+                $scope.status = 'You cancelled the dialog.';
+            });
         };
 
         $scope.dialogDeleteValue = function(ev) {
@@ -135,12 +133,11 @@ module.exports = function(app) {
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose:true
-            })
-                .then(function(answer) {
-                    $scope.status = 'You said the information was "' + answer + '".';
-                }, function() {
-                    $scope.status = 'You cancelled the dialog.';
-                });
+            }).then(function(answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function() {
+                $scope.status = 'You cancelled the dialog.';
+            });
         };
 
         $scope.openToast = function(message) {
