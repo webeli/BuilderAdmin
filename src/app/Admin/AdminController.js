@@ -20,11 +20,12 @@ module.exports = function(app) {
        ** $scope functions
        */
       $scope.toggle = function () {
-        // Component lookup should always be available since we are not using `ng-if`
-        $mdSidenav('left').toggle()
-            .then(function () {
-              $log.debug("close LEFT is done");
-            });
+        var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+        if (width > 960) { return; }
+
+        $mdSidenav('left').toggle().then(function () {
+          $log.debug("close LEFT is done");
+        });
       };
       $scope.addItemOption = function(item) {
         productsRef.push(item);
