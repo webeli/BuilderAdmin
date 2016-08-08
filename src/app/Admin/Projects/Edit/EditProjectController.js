@@ -106,6 +106,8 @@ module.exports = function(app) {
                 dbRef.child(obj.key).child("title").set(result);
                 var toastMsg = "Changed: "+obj.title+" To: "+result;
                 $scope.openToast(toastMsg);
+                // TODO: Find a better solution than updating the whole object (more firebasify)
+                $scope.getCategoryItems(categories[0].$id);
             }, function() {
                 console.log("error toast...");
             });
