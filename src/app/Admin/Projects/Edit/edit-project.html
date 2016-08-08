@@ -1,7 +1,7 @@
 <md-content>
     <md-button class="md-raised md-primary" ng-click="dialogProjectSettings($event)">Project Settings</md-button>
     <md-button class="md-raised md-primary" ng-click="dialogNewValue($event)">New Value</md-button>
-    <md-button class="md-raised md-primary" ng-click="dialogEditValue($event)">Edit {{selectedValue.title}}</md-button>
+    <md-button class="md-raised md-primary" ng-click="dialogEditValue($event, selectedValue)">Edit {{selectedValue.title}}</md-button>
     <md-button class="md-raised md-warn" ng-click="dialogDeleteValue($event)">Delete {{selectedValue.title}}</md-button>
     <md-tabs md-dynamic-height md-border-bottom>
         <md-tab md-active="$index === 0" ng-repeat="category in categories" label="{{category.title}}" ng-click="getCategoryItems(category.$id, category.title)"></md-tab>

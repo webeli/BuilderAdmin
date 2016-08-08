@@ -1,5 +1,6 @@
 module.exports = function(app) {
-    app.controller('EditProjectController', ['$scope', 'Auth', '$state', '$stateParams', '$firebaseArray', '$timeout', '$mdDialog', function($scope, Auth, $state, $stateParams, $firebaseArray, $timeout, $mdDialog) {
+    app.controller('EditProjectController', ['$scope', 'Auth', '$state', '$stateParams', '$firebaseArray', '$timeout', '$mdDialog', '$mdToast',
+        function($scope, Auth, $state, $stateParams, $firebaseArray, $timeout, $mdDialog, $mdToast) {
 
         $scope.categories = 0;
         $scope.items = 0;
@@ -27,7 +28,7 @@ module.exports = function(app) {
         $scope.getCategoryItems = function(categoryKey, categoryTitle) {
             $scope.items = 0;
             $scope.options = null;
-            $scope.selectedValue = {key:categoryKey,title:categoryTitle};
+            $scope.selectedValue = {key:categoryKey,title:categoryTitle, type:'category'};
             var categoryRef = categoriesRef.child(categoryKey).child("refs");
             var category = $firebaseArray(categoryRef);
             category.$loaded().then(function(keys){
@@ -37,7 +38,7 @@ module.exports = function(app) {
 
         $scope.getItemOptions = function(itemKey, itemTitle) {
             $scope.options = 0;
-            $scope.selectedValue = {key:itemKey, title:itemTitle};
+            $scope.selectedValue = {key:itemKey, title:itemTitle, type:'item'};
             var optionRefs = itemsRef.child(itemKey).child("refs");
             var options = $firebaseArray(optionRefs);
             options.$loaded().then(function(keys){
@@ -87,19 +88,27 @@ module.exports = function(app) {
                 });
         };
 
-        $scope.dialogEditValue = function(ev) {
-            $mdDialog.show({
-                controller: 'DialogController',
-                template: require('./dialog_editvalue.html'),
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose:true
-            })
-                .then(function(answer) {
-                    $scope.status = 'You said the information was "' + answer + '".';
-                }, function() {
-                    $scope.status = 'You cancelled the dialog.';
-                });
+        $scope.dialogEditValue = function(ev, obj) {
+            if (obj.type === "category") {
+                var dbRef = categoriesRef;
+            } else if (obj.type === "item") {
+                var dbRef = itemsRef;
+            }
+            console.log(obj);
+            var confirm = $mdDialog.prompt()
+                .title('Edit: '+obj.title)
+                .placeholder('New value')
+                .ariaLabel('New value')
+                .targetEvent(ev)
+                .ok('Edit')
+                .cancel('Cancel');
+            $mdDialog.show(confirm).then(function(result) {
+                dbRef.child(obj.key).child("title").set(result);
+                var toastMsg = "Changed: "+obj.title+" To: "+result;
+                $scope.openToast(toastMsg);
+            }, function() {
+                console.log("error toast...");
+            });
         };
 
         $scope.dialogProjectSettings = function(ev) {
@@ -130,6 +139,10 @@ module.exports = function(app) {
                 }, function() {
                     $scope.status = 'You cancelled the dialog.';
                 });
+        };
+
+        $scope.openToast = function(message) {
+            $mdToast.show($mdToast.simple().textContent(message).position('bottom right'));
         };
 
     }]);
