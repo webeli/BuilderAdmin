@@ -30,15 +30,15 @@
       </md-toolbar>
       <md-content style="padding-top:10px;">
         <md-list>
-          <md-list-item ui-sref="admin.dashboard">
+          <md-list-item ui-sref="admin.dashboard" ng-click="toggle()">
             <i class="material-icons">dashboard</i>
             <p style="margin-left:10px;">Dashboard</p>
           </md-list-item>
-          <md-list-item ui-sref="admin.projects">
+          <md-list-item ui-sref="admin.projects" ng-click="toggle()">
             <i class="material-icons">list</i>
             <p style="margin-left:10px;"> Projects</p>
           </md-list-item>
-          <md-list-item ui-sref="admin.statistics">
+          <md-list-item style="opacity:0.3;">
             <i class="material-icons">equalizer</i>
             <p style="margin-left:10px;"> Statistics</p>
           </md-list-item>
