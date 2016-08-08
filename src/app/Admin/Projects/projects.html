@@ -6,6 +6,9 @@
           <md-card-title-text>
             <span class="md-headline">{{project.pName}}</span>
             <span class="md-subhead">{{project.deadline}}</span>
+            <md-button class="md-icon-button md-primary" aria-label="Launch">
+              <i class="material-icons">launch</i>
+            </md-button>
           </md-card-title-text>
           <md-card-title-media>
             <div class="md-media-lg card-media">
@@ -15,7 +18,6 @@
         </md-card-title>
         <md-card-actions layout="row">
           <md-button class="md-raised md-warn" ng-click="deleteProject($event, project)">Delete</md-button>
-          <md-button class="md-raised md-primary">Share</md-button>
           <md-button class="md-raised md-primary" ng-click="editProject(project.$id);">Edit</md-button>
           <md-button class="md-raised md-primary" ng-click="viewProject(project.$id);">View</md-button>
         </md-card-actions>
