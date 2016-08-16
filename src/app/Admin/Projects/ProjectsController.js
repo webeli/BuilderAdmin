@@ -18,12 +18,14 @@ module.exports = function(app) {
        ** $scope functions
        */
       $scope.editProject = function(key) {
-          if (key) {
-              $state.go("admin.editproject", {"projectKey" : key})
-          }
+        if (key) {
+          $state.go("admin.editproject", {"projectKey" : key})
+        }
       };
       $scope.viewProject = function(key) {
-          console.log(key);
+        if (key) {
+          window.location.href = "https://tival.se/#/project/"+key;
+        }
       };
 
       $scope.createProject = function(ev) {
